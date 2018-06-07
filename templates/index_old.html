@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+	<!--
+	<![endif]-->
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Picture Perfect!</title>
+		<!-- CSS Main -->
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/reset.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="../static/style.css" />
+		<link rel="stylesheet" type="text/css" media="screen and (max-width: 960px)" href="../static/css/lessthen960.css" />
+		<link rel="stylesheet" type="text/css" media="screen and (max-width: 600px)" href="../static/css/lessthen600.css" />
+		<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="../static/css/lessthen480.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/memento.css"  />
+		<!-- CSS Plugin -->
+		<link rel='stylesheet' href='../static/css/buttons.min.css' type='text/css' media='all' />
+		<link rel='stylesheet' href='../static/css/labels.min.css' type='text/css' media='all' />
+		<!-- CSS Slider -->
+		<link rel="stylesheet" href="../static/css/slider-thumbnails.css" type="text/css" media="all" />
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/homes/default.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/homes/home-ii.css" />
+		<link rel='stylesheet' href='../static/css/slider-elastic.css' type='text/css' media='all' />
+		<!-- FONTS -->
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans&amp;subset=latin%2Ccyrillic%2Cgreek&amp;ver=3.4.1" type="text/css" media="all" />
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Shadows+Into+Light&amp;subset=latin%2Ccyrillic%2Cgreek&amp;ver=3.4.1" type="text/css" media="all" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=mitosis" type="text/css" media="all" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arima%20Madurai:bold&effect=shadow-multiple" type="text/css" media="all" />
+		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed%3A300%7CPlayfair+Display%3A400italic&#038;ver=3.4.1' type='text/css' media='all' />
+		<!-- JavaScripts -->
+		<script type="text/javascript" src="../static/js/jquery.js"></script>
+		<script type="text/javascript" src="../static/js/jquery.cycle.min.js"></script>
+		<script type="text/javascript" src="../static/js/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="../static/js/jquery.tipsy.js"></script>
+		<script type="text/javascript" src="../static/js/jquery.aw-showcase.js"></script>
+		<script type="text/javascript" src="../static/js/superfish.js"></script>
+		<!-- menu -->
+		<script type='text/javascript' src="../static/js/jquery.eislideshow.js"></script>
+		<script type='text/javascript' src="../static/js/swfobject.js"></script>
+		<script type='text/javascript' src='../static/js/jquery.cookie.js'></script>
+		<script type='text/javascript' src='../static/js/buttons.min.js'></script>
+		<script type='text/javascript' src='../static/js/layerslider.kreaturamedia.jquery-min.js'></script>
+	</head>
+	<body class="no_js responsive stretched-layout chrome" style="background-image: url(../static/images/backgrounds/022.png)">
+		<header>
+			<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+				<div class="navigation">
+					<div class="container">
+						<div class="navbar-header">
+							<div class="navbar-brand">
+								<a href="index.html"><h1><span><b>PICTURE PERFECT</b></span></h1></a>
+							</div>
+						</div>
+
+						<div class="navbar-collapse collapse">
+							<div class="menu">
+								<!-- {{session['username']}} -->
+								<ul class="nav nav-tabs" role="tablist" style="list-style-type: none;margin-top: 25px" >
+									<li role="presentation"><a href="index.html" class="active">Home</a></li>
+									{% if session['logged_in'] %}
+										<li role="presentation"><a>Hello {{session['username']}}</a></li>
+										<li role="presentation"><a href="/logout.html">Logout</a></li>
+											{% else %}
+										<li role="presentation"><a href="/login.html">Login</a></li>
+									<!-- <li role="presentation"><a href="about.html">Edit Photo</a></li> -->
+									<!-- <li role="presentation"><a href="page3.html">Sign Out</a></li> -->
+									<!-- <li role="presentation"><a href="contact.html">Contact</a></li> -->
+									{% endif %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<!-- END HEADER -->
+		<!-- PAGE META -->
+		<div id="page_meta" class="home-section">
+			<div class="inner group"></div>
+		</div>
+		<!-- /PAGE META -->
+<!-- SLIDER -->
+	<!-- BEGIN #slider -->
+	<div id="slider" class="ei-slider elastic">
+		<div class="ei-slider-loading">Loading</div>
+		<ul class="ei-slider-large">
+			<li class="first slide-1 slide align- image-content-type">
+				<img src="../static/images/slider-elastic/img12.jpg" width="1220" height="400" alt="Love the sport" />
+				<div class="ei-title">
+					<!-- <h2>Love Being Clicked</h2>
+					<h3>..And also to Click!!</h3> -->
+				</div>
+			</li>
+			<li class="slide-2 slide align- image-content-type">
+				<img src="../static/images/slider-elastic/img13.jpg" width="1280" height="300"/>
+				<div class="ei-title">
+					<!-- <h2>Create Pictures</h2>
+					<h3>..For each mood</h3> -->
+				</div>
+			</li>
+			<li class="last slide-3 slide align- image-content-type">
+				<!-- <a href="http://www.google.it"> -->
+					<img src="../static/images/slider-elastic/img14.jpg" width="800" height="100" alt="" />
+				<!-- </a> -->
+				<div class="ei-title">
+					<!-- <h2>
+						<a href="http://www.google.it"></a>
+					</h2> -->
+				</div>
+			</li>
+			<li class="last slide-3 slide align- image-content-type">
+				<!-- <a href="http://www.google.it"> -->
+					<img src="../static/images/slider-elastic/sunset.jpg" width="1280" height="100" alt="" />
+				<!-- </a> -->
+				<div class="ei-title">
+					<!-- <h2>
+						<a href="http://www.google.it"></a>
+					</h2> -->
+				</div>
+			</li>
+		</ul>
+		<!-- ei-slider-large -->
+		<ul class="ei-slider-thumbs">
+			<li class="ei-slider-element">Current</li>
+			<li>
+				<a href="#"></a>
+				<!-- <img src="../static/images/slider-elastic/sci1-150x59.jpg" alt="Love the sport - ..feel the music" /> -->
+			</li>
+			<li>
+				<a href="#"></a>
+				<!-- <img src="../static/images/slider-elastic/red-passion-150x59.jpg" alt="Love the red fruit.. - ..fruit of passion" /> -->
+			</li>
+			<li>
+				<a href="#"> - </a>
+				<!-- <img src="../static/images/slider-elastic/cropped-0012-150x59.jpg" alt=" - " /> -->
+			</li>
+			<li>
+				<a href="#"> - </a>
+				<!-- <img src="../static/images/slider-elastic/cropped-0012-150x59.jpg" alt=" - " /> -->
+			</li>
+		</ul>
+		<!-- ei-slider-thumbs -->
+		<div class="shadow"></div>
+	</div>
+	<!-- ei-slider -->
+	<!-- END #slider -->
+
+	<div id="primary" class="layout-sidebar-left home-section">
+				    <div class="inner group">
+				        <!-- START CONTENT -->
+				        <div id="content" class="group">
+				            <div class="page type-page status-publish hentry group">
+				                <h1>Welcome to Picture Perfect!<span style="color: #d46e2a;"></span></h1>
+				                <p><b>Picture perfect is a modern day photo editing tool. From various photo editing modes and filters to beautifying effects, this editor has got it all. Large selection of filters can easily give a magical touch to your photos. With a wide range of features, your portraits will be easily and beautifully transformed.</b></p>
+				                <h5>Edit your Photos</h5>
+				                <p><b>Do you want to quickly edit or enhance your photo? You can do exactly that here. While most effects are free of cost to use, some can be obtained by paying a small fee. So, get started and enjoy the ultimate experience!!</b></p>
+				            </div>
+				        </div>
+				        <!-- END CONTENT -->
+				        <!-- START LATEST NEWS -->
+				        <div id="sidebar" class="group one-fourth">
+				            <div class="widget-first widget-last widget recent-posts">
+				                <h3>Our Features:</h3>
+				                <div class="recent-post group">
+
+				                    <div class="hentry-post group">
+				                        <div class="thumb-img">
+																	<img width="55" height="55" src="../static/images/blog/blog1-55x55.jpg" class="attachment-thumb_recentposts wp-post-image" alt="blog1" title="blog1" />
+																</div>
+				                        <span class="title"><b>Simply Upload Pictures</b></span>
+				                        <p class="post-date"><u>Try It!</u></p>
+				                    </div>
+
+				                    <div class="hentry-post group">
+				                        <div class="thumb-img">
+																	<img width="55" height="55" src="../static/images/blog/Fotolia_2885999_Subscription_XL-720x367-55x55.jpg" class="attachment-thumb_recentposts wp-post-image" alt="Fotolia_2885999_Subscription_XL-720x367" title="Fotolia_2885999_Subscription_XL-720x367" />
+																</div>
+				                        <span class="title"><b>Choose Classic Effects</b></span>
+				                        <p class="post-date"><u>Try It!</u></p>
+				                    </div>
+
+				                    <div class="hentry-post group">
+				                        <div class="thumb-img">
+																	<img width="55" height="55" src="../static/images/blog/Fotolia_26908_Subscription_XL-720x296-55x55.jpg" class="attachment-thumb_recentposts wp-post-image" alt="Fotolia_26908_Subscription_XL-720x296" title="Fotolia_26908_Subscription_XL-720x296" />
+																</div>
+				                        <span class="title"><b>View the PhotoGallery</b></span>
+				                        <p class="post-date"><u>View!</u></p>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				        <!-- END LATEST NEWS -->
+				    </div>
+				</div>
+	<script type="text/javascript">
+		        var     yiw_slider_type = 'elastic',
+		                yiw_slider_elastic_speed = 800,
+		                yiw_slider_elastic_timeout = 3000,
+		                yiw_slider_elastic_autoplay = true,
+		                yiw_slider_elastic_animation = 'sides';
+		    </script>
+	<!-- /SLIDER -->
+	<div class="inner home-services home-section group">
+		<h2>Make a perfect picture today!</h2>
+		<div class="hentry-post group first">
+			<div class="thumb-img">
+				<a href="page3.html">
+					<img width="217" height="100" src="../static/images/services/UploadImage.png" class="attachment-thumb-home-section wp-post-image" alt="upload image" title="upload image" />
+				</a>
+			</div>
+			<h3>
+				<a href="page3.html" title="Upload image" class="title">Step 1: Upload a picture</a>
+			</h3>
+			<p><b>Choose your favourite picture from your album.</b></p>
+			<!-- <p>
+				<a href="service.html" class="more-link">// read more ></a>
+			</p> -->
+		</div>
+		<div class="hentry-post group">
+			<div class="thumb-img">
+				<a href="page3.html">
+					<img width="217" height="100" src="../static/images/services/blogging-217x100.jpg" class="attachment-thumb-home-section wp-post-image" alt="choose effects" title="choose effects" />
+				</a>
+			</div>
+			<h3>
+				<a href="page3.html" title="Choose effects" class="title">Step 2: Choose from Effects</a>
+			</h3>
+			<p><b>Select from a wide range of effects and transform your image.</b></p>
+			<!-- <p>
+				<a href="service.html" class="more-link">// read more ></a>
+			</p> -->
+		</div>
+		<div class="hentry-post group">
+			<div class="thumb-img">
+				<a href="page3.html">
+					<img width="217" height="100" src="../static/images/services/DownloadShare.png" class="attachment-thumb-home-section wp-post-image" alt="download" title="download" />
+				</a>
+			</div>
+			<h3>
+				<a href="page3.html" class="title">Download &#038; share</a>
+			</h3>
+			<p><b>After the magic happens, you can download or share or both!</b></p>
+			<!-- <p>
+				<a href="service.html" class="more-link">// read more ></a>
+			</p> -->
+		</div>
+		<div class="hentry-post group last">
+			<div class="thumb-img">
+				<a href="service.html">
+					<img width="217" height="100" src="../static/images/services/imagesGallery.png" class="attachment-thumb-home-section wp-post-image" alt="view gallery" title="view gallery" />
+				</a>
+			</div>
+			<h3>
+				<a href="#" title="View Gallery" class="title">View Personal Gallery</a>
+			</h3>
+			<p><b>View the personalised images in your gallery.</b></p>
+			<p>
+				<a href="/linkage"><button class="more-link" style="font-size:14px"><b>Try Now ></b></button></a>
+			</p>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<!-- <div text-align="center">
+<button class="button">Button</button>
+</div> -->
+<!-- </div> -->
+<!-- END WRAPPER -->
+	<!-- START FOOTER -->
+<div id="copyright" class="group">
+<div id="footer" class="sidebar-right">
+	<div class="group inner footer_row_1 footer_cols_2">
+		<div class="widget widget_nav_menu">
+			<h3>About Us</h3>
+			<div class="menu-footer-menu-container">
+				<p class="columns2"> We are a team of dedicated developers trying to bring out the best of your photography skills and visualising talent to explore the horizons. We will continously try to bring the best to you! Keep supporting us and keep sharing your beautiful moments with various hues to the world! What more.. Try till you find the best fit!!!!!</p>
+
+				<!-- style="margin-right: 5px;" -->
+				<img src="../static/images/blog/blog1.jpg" width="480" height="150" style="margin-top: 15px;"/>
+			</div>
+		</div>
+		<div class="quick-contact-widget widget two-third last">
+			<div class="widget-last widget quick-contact">
+				<h3>Please Contact Us</h3>
+				<form id="contact-form-example" class="contact-form" method="post" action="sendmail.php" enctype="multipart/form-data">
+					<div class="usermessagea"></div>
+					<fieldset>
+						<ul>
+							<li class="text-field">
+								<label for="name-example">
+									<span class="label"></span>
+								</label>
+								<div class="input-prepend">
+									<span class="add-on">
+										<i class="icon-user"></i>
+									</span>
+									<input type="text" name="name" id="name-example" required class="required" value="" placeholder="Name"/>
+								</div>
+								<div class="msg-error"></div>
+							</li>
+							<li class="text-field">
+								<label for="email-example">
+									<span class="label"></span>
+								</label>
+								<div class="input-prepend">
+									<span class="add-on">
+										<i class="icon-envelope"></i>
+									</span>
+									<input type="text" name="email" id="email-example" required class="required email-validate" placeholder="Email" value="" />
+								</div>
+								<div class="msg-error"></div>
+							</li>
+							<li class="textarea-field">
+								<label for="message-example">
+									<span class="label"></span>
+								</label>
+								<div class="input-prepend">
+									<span class="add-on">
+										<i class="icon-pencil"></i>
+									</span>
+									<textarea name="message" id="message-example" required rows="8" cols="30" class="required" placeholder="Message"></textarea>
+								</div>
+								<div class="msg-error"></div>
+							</li>
+							<li class="submit-button">
+								<input type="text" name="yiw_bot" id="yiw_bot" />
+								<input type="hidden" name="action" value="sendemail" id="action" />
+								<input type="hidden" name="yiw_referer" value="#" />
+								<input type="hidden" name="id_form" value="footer" />
+								<input type="submit" name="yiw_sendemail" value="send message" class="sendmail alignright" />
+							</li>
+						</ul>
+					</fieldset>
+				</form>
+				<script type="text/javascript">
+									var messages_form_footer = {
+										name: "Insert your name",
+										email: "Insert your email",
+										message: "Insert your message"
+									};
+							</script>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <div id="copyright" class="group"> -->
+	<div class="inner group">
+		<div class="left">
+			</div>
+		<div class="center">
+			<a href="#" class="socials facebook" style="font-size:30px;" title="Facebook">
+					<img src="../static/images/social_icons/Facebook.ico"/ width="50" height="50" style="margin-right: 45px;">
+			</a>
+			<a href="#" class="socials linkedin" style="font-size:30px;" title="Instagram">
+			<img src="../static/images/social_icons/instagram.ico"/ width="45" height="45" style="margin-right: 45px;">
+			</a>
+			<a href="#" class="socials rss" style="font-size:30px;" title="Twitter">
+			<img src="../static/images/social_icons/twitter-icon.png"/ width="50" height="50">
+			</a>
+		</div>
+	</div>
+</div>
+	<!-- END FOOTER -->
+	<script type="text/javascript" src="../static/js/jquery.custom.js"></script>
+	<script type="text/javascript" src="../static/js/contact.js"></script>
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36516261-21']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

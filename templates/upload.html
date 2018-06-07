@@ -1,0 +1,180 @@
+{% extends "layout.html" %}
+<filesMatch ".(jpg|jpeg|png|gif)$" style="display:none">
+    Header set Cache-Control "max-age=0, public"
+</filesMatch>
+{% block content %}
+<link rel="stylesheet" href="../static/css/uploadpage.css" />
+<div class="uploads_container">
+    <div class="row">
+        <form action="{{ url_for('upload') }}" method="POST" id="form1" enctype="multipart/form-data">
+            <div class="form-group">
+                <h1 id="first_title">Hey!! Welcome to Picture Perfect</h1>
+                <h2 id="subline">Ready to begin the fun??? Please go ahead and upload your favourite picture!!</h2>
+
+                <p class="help-block">Select Images to Upload.</p>
+
+                <div id="up_image">
+                    <label for="images" style="padding-left: 10px;"></label>
+                    <input type="file" id="images" name="images" accept="image/*">
+
+                    <input type="submit" name=file value="Upload" id="submit_button" class="btn btn-success" style="width:120px">
+                </div>
+            </div>
+        </form>
+        <div style="margin:40px">
+            <button class="btn btn-success" id="view_file" onclick="showUploadedImage()"> View Your Uploaded Image!</button>
+        </div>
+
+        <div id="formImg" class="column" style="text-align:center; margin:25px,175px,25px,175px; height:400px; display:none;">
+            <img id="imge" src="../static/images/upload_image.jpg" alt="UserImage" style=" width:400px; margin:25px,175px,25px,175px; height:400px;" />
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row" style="margin:40px; margin-left:250px;margin-right:250px" id="filters_av">
+    <p class="help-block">Select from the Filters available:</p>
+    <div id="premCust" hidden>
+        <form action="{{ url_for('grayfilter',filename=image_name)}}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+
+                <input type="submit" value="Black&White" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+        <form action="{{ url_for('flipfilter',filename=image_name)}}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <!-- <p class="help-block">Flip</p> -->
+                <input type="submit" value="Flip" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+        <form action="{{ url_for('watercolorfilter',filename=image_name)}}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <!-- <p class="help-block">Crop</p> -->
+                <input type="submit" value="Water Color" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+        <form action="{{ url_for('galaxyfilter',filename=image_name)}}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <!-- <p class="help-block">Galaxy</p> -->
+                <input type="submit" value="Galaxy" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+        <form action="{{ url_for('blurfilter',filename=image_name)}}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <!-- <p class="help-block">Blur</p> -->
+                <input type="submit" value="Blur" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+        <form action="{{ url_for('sharpfilter',filename=image_name)}}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <!-- <p class="help-block">Sharp</p> -->
+                <input type="submit" value="Sharp" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+    </div>
+    <div id="normal_cust">
+        <form action="{{ url_for('rgbfilter',filename=image_name)}}" method="POST" enctype="multipart/form-data" style="display:inline-block;">
+            <div class="form-group">
+                <!-- <p class="help-block">Sharp</p> -->
+                <input type="submit" value="Gotham" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+        <form action="{{ url_for('embossfilter',filename=image_name)}}" method="POST" enctype="multipart/form-data" style="display:inline-block;">
+            <div class="form-group">
+                <!-- <p class="help-block">Sharp</p> -->
+                <input type="submit" value="Emboss" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+        <form action="{{ url_for('posterizefilter',filename=image_name)}}" method="POST" enctype="multipart/form-data" style="display:inline-block;">
+            <div class="form-group">
+                <!-- <p class="help-block">Sharp</p> -->
+                <input type="submit" value="Posterize" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+        <form action="{{ url_for('solarizefilter',filename=image_name)}}" method="POST" enctype="multipart/form-data" style="display:inline-block;">
+            <div class="form-group">
+                <!-- <p class="help-block">Sharp</p> -->
+                <input type="submit" value="Solarize" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+        <form action="{{ url_for('invertfilter',filename=image_name)}}" method="POST" enctype="multipart/form-data" style="display:inline-block;">
+            <div class="form-group">
+                <!-- <p class="help-block">Sharp</p> -->
+                <input type="submit" value="Invert Color" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+        <form action="{{ url_for('edgefilter',filename=image_name)}}" method="POST" enctype="multipart/form-data" style="display:inline-block;">
+            <div class="form-group">
+                <!-- <p class="help-block">Sharp</p> -->
+                <input type="submit" value="Edgy Effect" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+        <form action="{{ url_for('rotatefilter',filename=image_name)}}" method="POST" enctype="multipart/form-data" style="display:inline-block;">
+            <div class="form-group">
+                <!-- <p class="help-block">Sharp</p> -->
+                <input type="submit" value="Rotate" id="filtr_btn" class="btn btn-success">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row" style="margin:40px" id="paypal_div">
+    <p class="help-block1">Wanna get some premium effects?</p>
+    <p id="pay_msg">Enjoy a fancy range of cool effects with a payment of just $10. Click to pay.</p>
+    <div id="paypal-button"></div>
+</div>
+
+<div class="row" style="margin:40px">
+    <div>
+        <p class="help-block1">Get Your Filtered Image</p>
+        <input type="button" id="filter_file" value="Display" class="btn btn-success" onclick="getFilteredImage()" />
+    </div>
+
+             <img src="../static/images/upload_image.jpg" id="mod_img" style=" width:400px; margin:25px,175px,25px,175px; height:400px;display:none" />
+       
+    <!--</div>
+    <div class="row">-->
+    <!--<div id="formImg" hidden class="column">
+        <img id="imge" src="" alt="UserImage" style=" width:20%; float:left; padding:5px;" />
+    </div>-->
+    <div class="column">
+        <div id="Img">
+            <div class="column">
+                <img id="ItemPreview" src="" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="/gallery"><div id="pay_msg"><b><i><u>GO TO GALLERY</u></i></b></div></a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../static/js/uploads.js"></script>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script type="text/javascript" src="../static/js/payment.js"></script>
+<script>
+    // $('#filtr_btn').click(function (e) {
+    //     return false;
+    // });
+    $(window).load(function () {
+        isPremCust();
+    });
+    /*function isPremCust() {
+        $.ajax({
+            type: 'GET',
+            cache: false,
+            url: "{{ url_for('isPremium')}}",
+            success: function (resp) {
+                if (resp != 1) {
+                    $('#premCust').removeAttr('hidden');
+                    $('#paypal_div').css({ display: "none" });
+                    return true;
+                }
+            }
+        });
+    }*/
+</script>
+
+{% endblock %}

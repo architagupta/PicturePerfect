@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="../static/css/gallery.css" />
+<div id="gallry_pg" class="wrapper group" style="height:750px">
+    <div id="primary" class="layout-sidebar-no home-section">
+        <a href="/upload" style="color:darkblue;font-weight:bolder; font-size:25px;margin:5px;"><u>Back To Uploads</u></a>
+
+        <div class="inner group">
+            <!-- START CONTENT -->
+            <div id="content" class="group">
+                <div id="portfolio-gallery" class="internal_page_items internal_page_gallery">
+                    <ul>
+                        <li style="display:inline">
+                            <a href="#" onclick="sortByTime()" style="color:darkblue;font-weight:bolder; font-size:20px;margin:5px;margin-left:64%;"><u>Sort By Latest Image</u></a>
+                        </li>
+                        <li style="display:inline">
+                            <a href="#" onclick="sortByOriginal()" style="color:darkblue;font-weight:bolder; font-size:20px;margin:5px;"><u>Original Order</u></a>
+                        </li>
+                    </ul>
+                    <!--<a href="#" onclick="sortByTime()" style="color:darkblue;font-weight:bolder; font-size:20px;margin:5px;margin-left:80%;"><u>Sort By Latest Image</u></a>-->
+                    <ul class="gallery-wrap image-grid group" id="unsorted_ul">
+                        {% if thumbnail_names %}
+                        {% for thumbnail_name in thumbnail_names %}
+                        {% if session['username'] in thumbnail_name %}
+                        <li data-id="id-{{ loop.index0}}" class="motion-graphics ">
+                            <div class="internal_page_item internal_page_item_gallery">
+                                <a href="#">
+                                    <img id="myImg{{ loop.index0 }}" width="208" height="168" src="{{url_for('thumbnails', filename=thumbnail_name)}}" class="picture wp-post-image" alt="{{thumbnail_name}}" onclick="doWithThisElement(this.id)" title="{{thumbnail_name}}" />
+                                </a>
+                            </div>
+                            <ul>
+                                <li style="display:inline">
+                                    <a href="{{url_for('save',save_file=thumbnail_name)}}"><div style="color:darkblue;font-weight:bolder; font-size:15px;padding:5px"><u>Download</u></div></a>
+                                </li>
+                                <li style="display:inline">
+                                    <a href="{{url_for('discard',image_name=thumbnail_name)}}"><div style="color:darkblue;font-weight:bolder; font-size:15px;padding:5px"><u>Delete</u></div></a>
+                                </li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% else %}
+                        <div style="text-align:center;">
+                            <p style="font-family:'Comic Sans MS';font-size:30px;color:darkblue;font-weight:bolder;">Please Take a Moment to Create your Filtered Images..Gallery is waiting!</p>
+                        </div>
+                        {% endif %}
+                    </ul>
+
+                    <ul class="gallery-wrap image-grid group" id="sorted_ul" hidden>
+                        {% if thumbnail_names %}
+                        {% for thumbnail_name in thumbnail_names|sort(reverse = True) %}
+                        {% if session['username'] in thumbnail_name %}
+                        <li data-id="id-{{ loop.index0 + 1000}}" class="motion-graphics ">
+                            <div class="internal_page_item internal_page_item_gallery">
+                                <a href="#">
+                                    <img id="myImg{{ loop.index0 + 1000}}" width="208" height="168" src="{{url_for('thumbnails', filename=thumbnail_name)}}" class="picture wp-post-image" alt="{{thumbnail_name}}" onclick="doWithThisElement(this.id)" title="{{thumbnail_name}}" />
+                                </a>
+                            </div>
+                            <ul>
+                                <li style="display:inline">
+                                    <a href="{{url_for('save',save_file=thumbnail_name)}}"><div style="color:darkblue;font-weight:bolder; font-size:15px;padding:5px"><u>Download</u></div></a>
+                                </li>
+                                <li style="display:inline">
+                                    <a href="{{url_for('discard',image_name=thumbnail_name)}}"><div style="color:darkblue;font-weight:bolder; font-size:15px;padding:5px"><u>Delete</u></div></a>
+                                </li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% else %}
+                        <div style="text-align:center;">
+                            <p style="font-family:'Comic Sans MS';font-size:30px;color:darkblue;font-weight:bolder;">Please Take a Moment to Create your Filtered Images..Gallery is waiting!</p>
+                        </div>
+                        {% endif %}
+                    </ul>
+
+                    <div class="clear"></div>
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="close_popup()">&times;</span>
+                        <img class="modal-content" id="img01">
+                        <div id="caption"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<
+<script>
+    function sortByTime() {
+        $('#unsorted_ul').hide();
+        $('#sorted_ul').show();
+        //$('#unsorted_ul').add()
+    }
+
+    function sortByOriginal() {
+        $('#unsorted_ul').show();
+        $('#sorted_ul').hide();
+    }
+    function doWithThisElement(id) {
+        var modal = document.getElementById('myModal');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+
+        var img = document.getElementById(id);
+        modal.style.display = 'block';
+        modalImg.src = img.src;
+        captionText.innerHTML = img.alt;
+    }
+
+    window.onclick = function (event) {
+        var modal = document.getElementById('myModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+    // Get the <span> element that closes the modal
+    function close_popup() {
+        var modal = document.getElementById('myModal');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = 'none';
+            modalImg.src = "";
+            captionText.innerHTML = "";
+        }
+    }
+</script>
+
+{% endblock %}
+<!-- END WRAPPER -->

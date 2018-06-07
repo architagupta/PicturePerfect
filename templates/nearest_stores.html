@@ -1,0 +1,200 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+    #contact_addrs {
+        text-align: center;
+        margin-right: 200px;
+        margin-left: 200px;
+        background-color: rgb(77,106,121);
+        list-style-type: none;
+        padding-top: 10px;
+    }
+
+        #contact_addrs .stores {
+            list-style-type: none;
+        }
+
+    .stores p {
+        color: #ffffff;
+    }
+
+    #contact_addrs .list-unstyled {
+        list-style-type: none;
+    }
+
+    .list-unstyled li {
+        color: white;
+    }
+</style>
+<!--<div class="map">
+    <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Kuningan,+Jakarta+Capital+Region,+Indonesia&amp;aq=3&amp;oq=kuningan+&amp;sll=37.0625,-95.677068&amp;sspn=37.410045,86.572266&amp;ie=UTF8&amp;hq=&amp;hnear=Kuningan&amp;t=m&amp;z=14&amp;ll=-6.238824,106.830177&amp;output=embed"></iframe>
+</div>-->
+<!--<div id="map" style="margin-left:50px;margin-right:50px;height:500px">
+    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1p5Tiv1PolomN8vmw-82ekFckk69dKMhd" width="100%" height="500"></iframe>
+</div>-->
+
+<div id="map1" style="margin:50px;height:500px"></div>
+<script>
+    function myMap() {
+
+        var broadway = {
+            info: '<strong>PicturePerfect on Broadway</strong><br>\
+                    5224 N Broadway St<br> Chicago, IL 60640<br>\
+                    <a href="https://goo.gl/maps/jKNEDz4SyyH2">Get Directions</a>',
+            lat: 41.976816,
+            long: -87.659916
+        };
+
+        var belmont = {
+            info: '<strong>PicturePerfect on Belmont</strong><br>\
+                    1025 W Belmont Ave<br> Chicago, IL 60657<br>\
+                    <a href="https://goo.gl/maps/PHfsWTvgKa92">Get Directions</a>',
+            lat: 41.939670,
+            long: -87.655167
+        };
+
+        var sheridan = {
+            info: '<strong>PicturePerfect on Sheridan</strong><br>\r\
+                    6600 N Sheridan Rd<br> Chicago, IL 60626<br>\
+                    <a href="https://goo.gl/maps/QGUrqZPsYp92">Get Directions</a>',
+            lat: 42.002707,
+            long: -87.661236
+        };
+
+        var locations = [
+            [broadway.info, broadway.lat, broadway.long, 0],
+            [belmont.info, belmont.lat, belmont.long, 1],
+            [sheridan.info, sheridan.lat, sheridan.long, 2],
+        ];
+        var map = new google.maps.Map(document.getElementById('map1'), {
+            zoom: 11,
+            center: new google.maps.LatLng(41.98, -87.665),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        //var mapCanvas = document.getElementById("map1");
+        //var myCenter = new google.maps.LatLng(41.976816, -87.659916);
+        //var mapOptions = { center: myCenter, zoom: 13 };
+        //var map = new google.maps.Map(mapCanvas, mapOptions);
+        //var marker = new google.maps.Marker({
+        //    position: myCenter,
+        //    animation: google.maps.Animation.BOUNCE
+        //});
+
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map,
+                //title: locations[i][0],
+                animation: google.maps.Animation.BOUNCE
+            });
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(locations[i][0]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }
+        //marker.setMap(map);
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeHOBg_Btpz5RE8Era9PVjbm3Ijhex6-4&callback=myMap"></script>
+
+<section id="contact-page">
+    <div class="container">
+
+        <div class="center">
+            <h1>Nearest Stores Around!</h1>
+            <p>Have you checked our offline stores yet?? Find out more..</p>
+        </div>
+
+        <ol id="contact_addrs">
+            <li class="stores">
+                <h3>PicturePerfect on Broadway</h3>
+                <p>5224 N Broadway St Chicago, IL 60640</p>
+                <p>Chicago,<span> IL </span>60640</p>
+                <div class="content">
+                    <div class="row store-hrs-contact">
+                        <div class="info col-sm-4 store-hours">
+                            <h5>Hours</h5>
+                            <ul class="list-unstyled">
+                                <li>Mon - Wed: 10 AM - 8 PM</li>
+                                <li>Sat: 10 AM - 8 PM</li>
+                                <li>Sun: 11 AM - 7 PM</li>
+                                <li>Thu - Fri: 10 AM - 9 PM</li>
+                            </ul>
+                        </div>
+
+                        <div class="info col-sm-8 contact">
+                            <h5>Contact</h5>
+                            <ul class="list-unstyled">
+                                <li class="store-phone">Phone:<a href="tel:212.826.8900" precog_scanned="true">212.826.8900</a></li>
+                                <li class="store-email">Email:<a href="mailto:perfectpicture905@gmail.com" precog_scanned="true">perfectpicture905@gmail.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="stores">
+                <h3>PicturePerfect on Belmont</h3>
+                <p>1025 W Belmont Ave Chicago, IL 60657</p>
+                <p>Chicago,<span> IL </span>60657</p>
+                <div class="content">
+                    <div class="row store-hrs-contact">
+                        <div class="info col-sm-4 store-hours">
+                            <h5>Hours</h5>
+                            <ul class="list-unstyled">
+                                <li>Mon - Wed: 10 AM - 8 PM</li>
+                                <li>Sat: 10 AM - 8 PM</li>
+                                <li>Sun: 11 AM - 7 PM</li>
+                                <li>Thu - Fri: 10 AM - 9 PM</li>
+                            </ul>
+                        </div>
+
+                        <div class="info col-sm-8 contact">
+                            <h5>Contact</h5>
+                            <ul class="list-unstyled">
+                                <li class="store-phone">Phone:<a href="tel:212.826.8900" precog_scanned="true">212.826.8900</a></li>
+                                <li class="store-email">Email:<a href="mailto:perfectpicture905@gmail.com" precog_scanned="true">perfectpicture905@gmail.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="stores">
+                <h3>PicturePerfect on Sheridan</h3>
+                <p>6600 N Sheridan Rd Chicago, IL 60626</p>
+                <p>Chicago,<span> IL </span>60626</p>
+                <div class="content">
+                    <div class="row store-hrs-contact">
+                        <div class="info col-sm-4 store-hours">
+                            <h5>Hours</h5>
+                            <ul class="list-unstyled">
+                                <li>Mon - Wed: 10 AM - 8 PM</li>
+                                <li>Sat: 10 AM - 8 PM</li>
+                                <li>Sun: 11 AM - 7 PM</li>
+                                <li>Thu - Fri: 10 AM - 9 PM</li>
+                            </ul>
+                        </div>
+
+                        <div class="info col-sm-8 contact">
+                            <h5>Contact</h5>
+                            <ul class="list-unstyled">
+                                <li class="store-phone">Phone:<a href="tel:212.826.8900" precog_scanned="true">212.826.8900</a></li>
+                                <li class="store-email">Email:<a href="mailto:perfectpicture905@gmail.com" precog_scanned="true">perfectpicture905@gmail.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+</section>
+{% endblock %}
