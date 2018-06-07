@@ -1,0 +1,56 @@
+.uploads_container{
+    width:100%;    
+    text-align:center;
+}
+
+.row {
+    text-align: center;
+}
+
+
+#first_title {
+    text-align: center;
+}
+
+#subline {
+    text-align: center;
+}
+
+.btn-success {
+    background-color: black;
+    color: #CFB53B;
+    border-width: thick;
+    border-color: black;
+    margin:8px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.help-block{
+    margin:40px;
+    color:maroon;
+    font-size:35px;
+    font-weight:700;
+}
+#pay_msg {
+    margin: 10px;
+    color: darkblue;
+    font-size: 20px;
+    font-weight: 500;
+    text-align:center;
+}
+
+.help-block1 {
+    color: maroon;
+    font-size: 35px;
+    font-weight: 700;
+}
+#up_image {
+    margin: 40px;
+}
+input{
+    font-size:16px;
+}
+#premCust #filtr_btn{
+    background-color: darkmagenta;
+}
